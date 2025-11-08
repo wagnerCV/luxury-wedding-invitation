@@ -5,25 +5,25 @@
 
 export const WEDDING_CONFIG = {
   // Couple Names
-  bride: "Sofia",
-  groom: "Miguel",
+  bride: "Jorge Borges",
+  groom: "Ana Oliveira",
   
   // Event Details
-  date: new Date("2025-09-20T18:00:00"), // September 20, 2025 at 6:00 PM
+  date: new Date("2026-09-05T10:00:00"), // September 5, 2026 at 10:00 AM
   venue: {
-    name: "Quinta da Aveleda",
-    address: "Rua da Aveleda, 4560-570 Penafiel, Portugal",
-    coordinates: { lat: 41.2082, lng: -8.2805 },
+    name: "Igreja de São Francisco Xavier da Caparica",
+    address: "Rua das Quintas 7 11, 2825-171, Caparica",
+    coordinates: { lat: 38.6602, lng: -9.2297 },
   },
   
   // Ceremony & Reception
   ceremony: {
-    time: "18:00",
-    location: "Jardim da Quinta",
+    time: "10:00",
+    location: "Igreja de São Francisco Xavier",
   },
   reception: {
-    time: "20:00",
-    location: "Salão Principal",
+    time: "13:00",
+    location: "Salão de Festas",
   },
   
   // Dress Code
@@ -41,8 +41,8 @@ export const WEDDING_CONFIG = {
   
   // Love Quote
   quote: {
-    text: "No meio de tantas pessoas, os nossos olhares encontraram-se. E nesse momento, soubemos que o amor verdadeiro existe.",
-    author: "Sofia & Miguel",
+    text: "O amor é paciente, o amor é bondoso.\nNão inveja, não se vangloria, não se orgulha.\nNão maltrata, não procura seus interesses, não se ira facilmente, não guarda rancor.\nO amor não se alegra com a injustiça, mas se alegra com a verdade.\nTudo sofre, tudo crê, tudo espera, tudo suporta.",
+    author: "Jorge Borges & Ana Oliveira",
   },
   
   // Spotify Playlist
@@ -51,16 +51,16 @@ export const WEDDING_CONFIG = {
   // RSVP
   rsvp: {
     formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // Replace with actual Formspree endpoint
-    deadline: new Date("2025-08-20T23:59:59"), // RSVP deadline
+    deadline: new Date("2026-08-05T23:59:59"), // RSVP deadline
   },
   
   // Gallery Images
   gallery: [
-    { src: "/images/couple-1.jpg", alt: "Sofia e Miguel - Retrato" },
-    { src: "/images/couple-2.jpg", alt: "Sofia e Miguel - Momento Romântico" },
-    { src: "/images/couple-3.webp", alt: "Sofia e Miguel - Celebração" },
-    { src: "/images/couple-4.webp", alt: "Sofia e Miguel - Venue" },
-    { src: "/images/venue-1.jpg", alt: "Quinta da Aveleda - Salão" },
+    { src: "/images/couple-1.jpg", alt: "Jorge e Ana - Retrato" },
+    { src: "/images/couple-2.jpg", alt: "Jorge e Ana - Momento Romântico" },
+    { src: "/images/couple-3.webp", alt: "Jorge e Ana - Celebração" },
+    { src: "/images/couple-4.webp", alt: "Jorge e Ana - Venue" },
+    { src: "/images/venue-1.jpg", alt: "Igreja de São Francisco Xavier - Interior" },
     { src: "/images/details-1.jpg", alt: "Detalhes da Decoração" },
     { src: "/images/details-2.jpg", alt: "Mesa de Celebração" },
     { src: "/images/details-3.jpg", alt: "Arranjos Florais" },

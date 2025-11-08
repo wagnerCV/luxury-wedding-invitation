@@ -155,19 +155,6 @@ export function RSVPSection() {
                     />
                   </div>
 
-                  {/* Dietary Restrictions */}
-                  <div className="space-y-2">
-                    <Label htmlFor="dietary" className="text-base">
-                      Restrições Alimentares
-                    </Label>
-                    <Textarea
-                      id="dietary"
-                      name="dietary"
-                      placeholder="Informem-nos sobre alergias ou preferências alimentares"
-                      className="min-h-24 text-base resize-none"
-                    />
-                  </div>
-
                   {/* Message */}
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-base">
