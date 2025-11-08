@@ -7,26 +7,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { trpc } from "@/lib/trpc";
+import { supabase } from "@/lib/supabase";
 
 export function RSVPSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const createRsvpMutation = trpc.rsvp.create.useMutation({
-    onSuccess: () => {
-      setIsSubmitted(true);
-      toast.success("Confirmação enviada com sucesso!", {
-        description: "Obrigado por confirmar a vossa presença!",
-      });
-    },
-    onError: (error) => {
-      toast.error("Erro ao enviar confirmação", {
-        description: error.message || "Por favor, tente novamente mais tarde.",
-      });
-    },
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -34,13 +23,31 @@ export function RSVPSection() {
     const data = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
-      phone: formData.get("phone") as string || undefined,
-      guestsCount: parseInt(formData.get("guests") as string, 10),
-      message: formData.get("message") as string || undefined,
+      phone: (formData.get("phone") as string) || null,
+      guests_count: parseInt(formData.get("guests") as string, 10),
+      message: (formData.get("message") as string) || null,
     };
 
-    createRsvpMutation.mutate(data);
-    form.reset();
+    try {
+      const { error } = await supabase
+        .from('rsvp')
+        .insert([data]);
+
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      toast.success("Confirmação enviada com sucesso!", {
+        description: "Obrigado por confirmar a vossa presença!",
+      });
+      form.reset();
+    } catch (error: any) {
+      console.error('Error submitting RSVP:', error);
+      toast.error("Erro ao enviar confirmação", {
+        description: error.message || "Por favor, tente novamente mais tarde.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -168,10 +175,10 @@ export function RSVPSection() {
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    disabled={createRsvpMutation.isPending}
+                    disabled={isSubmitting}
                     className="w-full h-14 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-luxury transition-luxury-fast"
                   >
-                    {createRsvpMutation.isPending ? (
+                    {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         A enviar...
