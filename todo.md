@@ -71,3 +71,26 @@
 - [x] Create Supabase configuration documentation
 - [x] Create admin password change documentation
 - [x] Create PWA installation guide for iOS and Android
+
+## Production Admin Dashboard Fix
+- [x] Verify Vercel build configuration for correct dist folder
+- [x] Ensure /admin route is accessible in production
+- [x] Create documentation for viewing users table in database
+- [x] Create documentation for setting admin role manually
+- [x] Create documentation for granting admin access to wife
+
+## Supabase Migration & Separate Admin Dashboard
+- [x] Install Supabase client in wedding website
+- [x] Remove tRPC/MySQL RSVP endpoints
+- [x] Create Supabase rsvp table schema
+- [x] Update RSVP form to submit directly to Supabase
+- [x] Test RSVP submission to Supabase
+- [x] Create /wedding-admin Next.js 14 project
+- [x] Set up Supabase client in admin dashboard
+- [x] Implement email/password authentication (2 users only)
+- [x] Build admin dashboard UI with statistics
+- [x] Add RSVP table with search and sort
+- [x] Implement CSV export functionality
+- [x] Add PWA manifest and service worker
+- [x] Create deployment documentation
+- [x] Provide .env setup instructions
