@@ -1,5 +1,6 @@
 {
   "buildCommand": "pnpm install && pnpm build",
   "outputDirectory": "dist/public",
+  "outputDirectoryOverride": "dist/public",
   "framework": "vite"
 }
