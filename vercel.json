@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm install && pnpm build",
-  "outputDirectory": "dist/public",
-  "outputDirectoryOverride": "dist/public",
-  "framework": "vite"
+  "framework": "vite",
+  "installCommand": "cd client && pnpm install",
+  "buildCommand": "cd client && pnpm run build",
+  "outputDirectory": "client/dist"
 }
