@@ -53,3 +53,21 @@
 - [x] Update ceremony time to 10h
 - [x] Replace love quote with biblical text about love
 - [x] Remove dietary restrictions field from RSVP form
+
+## RSVP Backend + Admin Dashboard (PWA)
+- [x] Upgrade project to add server and database features
+- [x] Create Supabase database schema for RSVP table
+- [x] Build POST /api/rsvp endpoint to save RSVP data
+- [x] Build GET /api/rsvp endpoint with admin authentication
+- [x] Update RSVP form to POST to new API endpoint
+- [x] Create /admin page with password authentication
+- [x] Build admin dashboard with RSVP data table
+- [x] Add filtering and sorting functionality
+- [x] Add "Export to CSV" feature
+- [x] Create manifest.json for PWA
+- [x] Create service worker for offline support
+- [x] Add app icons for iOS and Android
+- [x] Test "Add to Home Screen" functionality
+- [x] Create Supabase configuration documentation
+- [x] Create admin password change documentation
+- [x] Create PWA installation guide for iOS and Android
