@@ -45,3 +45,11 @@
 - [x] Verify smooth scroll performance
 - [x] Create deployment documentation for Vercel
 - [x] Save checkpoint for deployment
+
+## User Requested Changes
+- [x] Swap names order to Jorge Borges & Ana Oliveira
+- [x] Update wedding date to 05 de setembro de 2026
+- [x] Update location to Igreja de São Francisco Xavier da Caparica, Rua das Quintas 7 11, 2825-171, Caparica
+- [x] Update ceremony time to 10h
+- [x] Replace love quote with biblical text about love
+- [x] Remove dietary restrictions field from RSVP form
