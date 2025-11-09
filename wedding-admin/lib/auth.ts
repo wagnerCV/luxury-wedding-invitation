@@ -1,14 +1,14 @@
 // Hardcoded admin credentials (2 users only)
 const ADMIN_USERS = [
   {
-    email: process.env.ADMIN_EMAIL_GROOM || 'groom@wedding.com',
-    password: process.env.ADMIN_PASSWORD_GROOM || 'groom123',
-    name: 'Jorge (Noivo)',
+    email: process.env.ADMIN_EMAIL_1 || 'admin1@wedding.com',
+    password: process.env.ADMIN_PASSWORD_1 || 'admin123',
+    name: 'Admin 1',
   },
   {
-    email: process.env.ADMIN_EMAIL_BRIDE || 'bride@wedding.com',
-    password: process.env.ADMIN_PASSWORD_BRIDE || 'bride123',
-    name: 'Ana (Noiva)',
+    email: process.env.ADMIN_EMAIL_2 || 'admin2@wedding.com',
+    password: process.env.ADMIN_PASSWORD_2 || 'admin123',
+    name: 'Admin 2',
   },
 ];
 
