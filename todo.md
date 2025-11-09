@@ -94,3 +94,10 @@
 - [x] Add PWA manifest and service worker
 - [x] Create deployment documentation
 - [x] Provide .env setup instructions
+
+## Project Restructuring - Two Separate Deployments
+- [x] Create vercel.json for wedding website (/client)
+- [x] Update admin dashboard env variable names (ADMIN_EMAIL_1, ADMIN_PASSWORD_1, etc.)
+- [x] Create vercel.json for admin dashboard (/wedding-admin)
+- [x] Create separate deployment documentation for both projects
+- [x] Verify both projects can deploy independently to Vercel
