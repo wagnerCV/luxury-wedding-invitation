@@ -2,7 +2,7 @@
   "buildCommand": "pnpm install && pnpm build",
   "outputDirectory": "client/dist",
   "installCommand": "pnpm install",
-  "framework": null,
+  "framework": vite,
   "rewrites": [
     {
       "source": "/api/:path*",
