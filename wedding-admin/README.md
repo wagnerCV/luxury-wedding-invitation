@@ -1,215 +1,176 @@
-# 🎉 Wedding Admin Dashboard
+# Wedding Admin Dashboard
 
-Admin dashboard for managing wedding RSVP confirmations. Built with Next.js 14, Supabase, and PWA support.
+A modern, elegant admin dashboard for managing wedding RSVPs with luxury minimalism design, dark mode support, and real-time Supabase integration.
 
-## 🚀 Quick Start
+## Features
 
-### Local Development
+### Authentication
+- **Hardcoded Admin Access**: Secure login for 2 admin users
+- **Route Protection**: Dashboard accessible only to authenticated admins
+- **Persistent Sessions**: Login state maintained via localStorage
 
-1. **Install dependencies:**
-   ```bash
-   pnpm install
-   ```
+### Dashboard Analytics
+- **Total RSVPs**: Count of all RSVP submissions
+- **Total Guests**: Sum of all confirmed guests
+- **Average Guests per RSVP**: Calculated metric for planning
 
-2. **Set up environment variables:**
-   ```bash
-   cp env.example.txt .env.local
-   ```
-   
-   Edit `.env.local` and add your credentials:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=https://javfiorjnisekjnrjtsg.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-   
-   ADMIN_EMAIL_GROOM=groom@wedding.com
-   ADMIN_PASSWORD_GROOM=your-password
-   
-   ADMIN_EMAIL_BRIDE=bride@wedding.com
-   ADMIN_PASSWORD_BRIDE=your-password
-   ```
+### RSVP Management
+- **Real-time Data**: Live connection to Supabase database
+- **Search Functionality**: Filter by name or email
+- **Sortable Columns**: Sort by name, date, or guest count
+- **CSV Export**: Download filtered RSVP data
+- **Responsive Table**: Mobile-friendly data display
 
-3. **Run development server:**
-   ```bash
-   pnpm dev
-   ```
-   
-   Open [http://localhost:3001](http://localhost:3001)
+### Design & UX
+- **Luxury Minimalism**: Elegant off-white backgrounds with emerald and gold accents
+- **Dark Mode**: Smooth theme switching with system preference support
+- **Framer Motion**: Subtle animations and transitions
+- **Responsive Layout**: Optimized for mobile, tablet, and desktop
+- **Custom Typography**: Playfair Display for headings, Inter for body text
 
-### Build for Production
+## Tech Stack
 
+- **Framework**: React 19 + Vite
+- **Styling**: Tailwind CSS 4 + Shadcn/UI
+- **Database**: Supabase (PostgreSQL)
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Date Formatting**: date-fns
+- **Routing**: Wouter
+- **TypeScript**: Full type safety
+
+## Environment Variables
+
+The following environment variables are required (configured via the Manus platform):
+
+```
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_ADMIN_EMAIL_1=admin1@wedding.com
+VITE_ADMIN_PASSWORD_1=your-secure-password-1
+VITE_ADMIN_EMAIL_2=admin2@wedding.com
+VITE_ADMIN_PASSWORD_2=your-secure-password-2
+```
+
+## Database Schema
+
+The dashboard expects a `rsvp` table in your Supabase database with the following structure:
+
+```sql
+CREATE TABLE rsvp (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT,
+  guests_count INTEGER NOT NULL DEFAULT 1,
+  message TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+## Local Development
+
+1. Install dependencies:
 ```bash
-pnpm build
-pnpm start
+pnpm install
 ```
 
-## 📦 Features
+2. Configure environment variables in the Manus platform settings
 
-- ✅ Email/password authentication (2 users only)
-- ✅ Real-time RSVP statistics
-- ✅ Complete guest list with search and sort
-- ✅ CSV export functionality
-- ✅ PWA installable on iOS/Android/Desktop
-- ✅ Responsive design (mobile-first)
-- ✅ Offline support with service worker
-
-## 🔐 Default Credentials
-
-**Groom:**
-- Email: `groom@wedding.com`
-- Password: `groom123`
-
-**Bride:**
-- Email: `bride@wedding.com`
-- Password: `bride123`
-
-**⚠️ Change these before deploying to production!**
-
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-1. **Install Vercel CLI:**
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Login:**
-   ```bash
-   vercel login
-   ```
-
-3. **Deploy:**
-   ```bash
-   vercel --prod
-   ```
-
-4. **Set environment variables** in Vercel dashboard:
-   - Go to Project Settings → Environment Variables
-   - Add all variables from `.env.local`
-
-### Alternative: GitHub + Vercel
-
-1. Push to GitHub
-2. Import repository in Vercel dashboard
-3. Configure environment variables
-4. Deploy
-
-## 📱 PWA Installation
-
-### iPhone
-1. Open in Safari
-2. Tap Share → "Add to Home Screen"
-
-### Android
-1. Open in Chrome
-2. Tap Menu → "Add to Home screen"
-
-### Desktop
-1. Look for install icon in address bar
-2. Click to install
-
-## 📊 Tech Stack
-
-- **Framework:** Next.js 14 (App Router)
-- **Database:** Supabase (PostgreSQL)
-- **Styling:** Tailwind CSS
-- **Icons:** Lucide React
-- **Date Formatting:** date-fns
-- **PWA:** Service Worker + Manifest
-
-## 📁 Project Structure
-
-```
-wedding-admin/
-├── app/
-│   ├── page.tsx              # Login page
-│   ├── dashboard/
-│   │   └── page.tsx          # Main dashboard
-│   ├── layout.tsx            # Root layout
-│   └── globals.css           # Global styles
-├── lib/
-│   ├── supabase.ts           # Supabase client
-│   └── auth.ts               # Authentication logic
-├── public/
-│   ├── manifest.json         # PWA manifest
-│   ├── sw.js                 # Service worker
-│   ├── register-sw.js        # SW registration
-│   ├── icon-192.png          # App icon (192x192)
-│   └── icon-512.png          # App icon (512x512)
-├── package.json
-├── next.config.js
-├── tailwind.config.ts
-└── tsconfig.json
+3. Start the development server:
+```bash
+pnpm dev
 ```
 
-## 🔧 Configuration
+4. Open http://localhost:3000 in your browser
 
-### Change Admin Credentials
+## Deployment to Vercel
 
-Edit `.env.local` or set environment variables:
+### Prerequisites
+- Vercel account
+- Supabase project with `rsvp` table
 
-```env
-ADMIN_EMAIL_GROOM=your-email@example.com
-ADMIN_PASSWORD_GROOM=your-secure-password
+### Steps
 
-ADMIN_EMAIL_BRIDE=your-email@example.com
-ADMIN_PASSWORD_BRIDE=your-secure-password
+1. **Push to GitHub**
+   - Create a new GitHub repository
+   - Push your code to the repository
+
+2. **Import to Vercel**
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "Add New Project"
+   - Import your GitHub repository
+
+3. **Configure Environment Variables**
+   - In Vercel project settings, add all environment variables:
+     - `VITE_SUPABASE_URL`
+     - `VITE_SUPABASE_ANON_KEY`
+     - `VITE_ADMIN_EMAIL_1`
+     - `VITE_ADMIN_PASSWORD_1`
+     - `VITE_ADMIN_EMAIL_2`
+     - `VITE_ADMIN_PASSWORD_2`
+
+4. **Deploy**
+   - Click "Deploy"
+   - Vercel will automatically build and deploy your application
+
+5. **Access Your Dashboard**
+   - Visit your deployed URL (e.g., `your-project.vercel.app`)
+   - Login with your admin credentials
+
+## Project Structure
+
+```
+client/
+  src/
+    components/     # Reusable UI components (Shadcn/UI)
+    contexts/       # React contexts (Theme)
+    lib/            # Utilities (Supabase, Auth)
+    pages/          # Page components (Login, Dashboard)
+    App.tsx         # Route configuration
+    index.css       # Global styles and theme variables
 ```
 
-### Customize Colors
-
-Edit `tailwind.config.ts`:
-
-```typescript
-colors: {
-  emerald: '#0F766E',    // Primary color
-  burgundy: '#7C1D2F',   // Secondary color
-  sand: '#D6BFA8',       // Accent color
-  offwhite: '#FAF7F5',   // Background color
-},
-```
-
-## 📖 Usage
+## Usage
 
 ### Login
-- Use groom or bride credentials
-- Session stored in localStorage
+1. Navigate to the root URL
+2. Enter admin email and password
+3. Click "Sign In"
 
 ### Dashboard
-- View total RSVPs, guests, and average
-- Search by name or email
-- Sort by date, name, or guest count
-- Export to CSV
+- **View Analytics**: See total RSVPs, guests, and averages at the top
+- **Search RSVPs**: Use the search bar to filter by name or email
+- **Sort Data**: Click column headers to sort by name, date, or guest count
+- **Export Data**: Click "Export CSV" to download filtered RSVP data
+- **Toggle Theme**: Click the moon/sun icon to switch between light and dark mode
+- **Logout**: Click "Logout" to end your session
 
-### Logout
-- Click logout button in header
-- Clears session and redirects to login
+## Security Notes
 
-## 🐛 Troubleshooting
+- Admin credentials are hardcoded in environment variables (suitable for small-scale use)
+- For production use with more admins, consider implementing a proper authentication system
+- Supabase Row Level Security (RLS) should be configured for additional data protection
+- Use HTTPS in production (Vercel provides this automatically)
 
-### Can't login
-- Verify environment variables are set
-- Check credentials match configuration
-- Clear browser cache and try again
+## Customization
 
-### No RSVPs showing
-- Check Supabase table has data
-- Verify RLS policies are configured
-- Check browser console for errors
+### Change Colors
+Edit the CSS variables in `client/src/index.css`:
+- Primary color (emerald): `--primary`
+- Secondary color (gold): `--secondary`
+- Background: `--background`
 
-### PWA won't install
-- Verify manifest.json is accessible
-- Check icons exist in /public
-- Ensure site is served over HTTPS
+### Change Fonts
+Update the Google Fonts import in `client/src/index.css` and modify the font-family declarations.
 
-## 📄 License
+### Add More Admin Users
+Add additional admin credentials to the environment variables and update `client/src/lib/auth.ts`.
 
-Private project for wedding use only.
+## Support
 
-## 👰🤵 Credits
+For issues or questions, please refer to the Manus documentation or contact support.
 
-Built with love for Jorge & Ana's wedding 💍
+## License
 
----
-
-**For complete deployment instructions, see:** `../SUPABASE_DEPLOYMENT_GUIDE.md`
+This project is created for personal use. Modify as needed for your wedding.
